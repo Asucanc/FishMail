@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:text="@string/next_step"
             android:textColor="@color/colorWhite"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/exam_message_button"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"/>
