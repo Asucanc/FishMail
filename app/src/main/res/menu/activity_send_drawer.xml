@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item
+            android:id="@+id/nav_rec_mail"
+            android:icon="@mipmap/mail"
+            android:title="收件箱" />
+        <item
+            android:id="@+id/nav_start_mail"
+            android:icon="@mipmap/start"
+            android:title="星标邮件" />
+        </group>
+    <item android:title="应用" >
+        <menu>
+            <item
+                android:id="@+id/nav_address"
+                android:icon="@mipmap/people"
+                android:title="通讯录" />
+            <item
+                android:id="@+id/nav_write_mail"
+                android:icon="@mipmap/rite"
+                android:title="写邮件" />
+            <item
+                android:id="@+id/nav_write_thing"
+                android:icon="@mipmap/write1"
+                android:title="写记事" />
+        </menu>
+    </item>
+    <item android:title="文件夹">
+        <menu>
+            <item
+                android:id="@+id/nav_adversaria"
+                android:icon="@mipmap/paper"
+                android:title="草稿箱" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@mipmap/send"
+                android:title="已发送" />
+            <item
+                android:id="@+id/nav_delete_mail"
+                android:icon="@mipmap/trash2"
+                android:title="已删除" />
+            <item
+                android:id="@+id/nav_trash_mail"
+                android:icon="@mipmap/trash1"
+                android:title="垃圾箱" />
+        </menu>
+    </item>
+    <item
+        android:title=""></item>
+</menu>
