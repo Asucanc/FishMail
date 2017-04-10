@@ -76,10 +76,6 @@ public class AddressActivity extends AppCompatActivity  implements NavigationVie
                 intent = new Intent(AddressActivity.this,DraftActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.nav_write_thing:
-                intent = new Intent(AddressActivity.this,AdversariaActivity.class);
-                startActivity(intent);
-                break;
             default:
                 break;
         }

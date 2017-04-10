@@ -74,10 +74,6 @@ public class AlreadyDeleteActivity extends AppCompatActivity implements Navigati
                 intent = new Intent(AlreadyDeleteActivity.this,DraftActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.nav_write_thing:
-                intent = new Intent(AlreadyDeleteActivity.this,AdversariaActivity.class);
-                startActivity(intent);
-                break;
             default:
                 break;
         }

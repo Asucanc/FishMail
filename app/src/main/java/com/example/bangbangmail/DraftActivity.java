@@ -74,10 +74,6 @@ public class DraftActivity extends AppCompatActivity implements NavigationView.O
                 intent = new Intent(DraftActivity.this,DraftActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.nav_write_thing:
-                intent = new Intent(DraftActivity.this,AdversariaActivity.class);
-                startActivity(intent);
-                break;
             default:
                 break;
         }

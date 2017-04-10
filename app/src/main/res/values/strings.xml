@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">BangBangMail</string>
+    <string name="app_name">鱼邮</string>
     <string name="title_activity_send">SendActivity</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-    <string name="title_activity_login">Sign in</string>
+    <string name="title_activity_login">鱼邮</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">请输入邮箱</string>

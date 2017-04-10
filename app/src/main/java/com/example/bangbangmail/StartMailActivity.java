@@ -75,10 +75,6 @@ public class StartMailActivity extends AppCompatActivity  implements NavigationV
                 intent = new Intent(StartMailActivity.this,DraftActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.nav_write_thing:
-                intent = new Intent(StartMailActivity.this,AdversariaActivity.class);
-                startActivity(intent);
-                break;
             default:
                 break;
         }

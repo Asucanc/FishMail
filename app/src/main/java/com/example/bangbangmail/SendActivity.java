@@ -2,16 +2,12 @@ package com.example.bangbangmail;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 
 public class SendActivity extends AppCompatActivity
@@ -102,10 +98,6 @@ public class SendActivity extends AppCompatActivity
                 break;
             case R.id.nav_adversaria:
                 intent = new Intent(SendActivity.this,DraftActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.nav_write_thing:
-                intent = new Intent(SendActivity.this,AdversariaActivity.class);
                 startActivity(intent);
                 break;
             default:

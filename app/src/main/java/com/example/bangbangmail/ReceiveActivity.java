@@ -73,10 +73,6 @@ public class ReceiveActivity extends AppCompatActivity implements NavigationView
                 intent = new Intent(ReceiveActivity.this,DraftActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.nav_write_thing:
-                intent = new Intent(ReceiveActivity.this,AdversariaActivity.class);
-                startActivity(intent);
-                break;
             default:
                 break;
         }

@@ -74,10 +74,6 @@ public class TrashActivity extends AppCompatActivity implements NavigationView.O
                 intent = new Intent(TrashActivity.this,DraftActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.nav_write_thing:
-                intent = new Intent(TrashActivity.this,AdversariaActivity.class);
-                startActivity(intent);
-                break;
             default:
                 break;
         }
