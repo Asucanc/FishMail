@@ -25,6 +25,7 @@
     <string name="phone_number">请输入手机号</string>
     <string name="find_password">找回密码</string>
     <string name="exam_message">请输入验证码</string>
+    <string name="exam_message_short">验证码:</string>
     <string name="register">注册</string>
     <string name="sendto_who">收件人:</string>
     <string name="main_title">主题:</string>

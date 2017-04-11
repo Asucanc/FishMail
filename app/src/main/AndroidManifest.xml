@@ -34,16 +34,26 @@
              <category android:name="android.intent.category.LAUNCHER" />
              </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".ForgetPasswordActivity" />
         <activity android:name=".RegisterActivity" >
+=======
+        <activity android:name=".ForgetPasswordActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+>>>>>>> 993ec97ffca47427e401525dc4c550a1b4e3c732
         </activity>
+        <activity android:name=".RegisterActivity"></activity>
         <activity
             android:name=".ReceiveDetailsActivity"
             android:label="@string/title_activity_receive_details"
             android:theme="@style/AppTheme" />
         <activity android:name=".SendDetailsActivity" />
         <activity android:name=".TransitionActivity" />
-        <activity android:name=".ForgetPassword2Activity" />
+        <activity android:name=".ForgetPassword2Activity"></activity>
         <activity android:name=".PhoneVerificationActivity" />
         <activity android:name=".MailVerificationActivity" />
         <activity android:name=".SecretSecurityActivity" />
