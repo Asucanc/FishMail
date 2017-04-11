@@ -26,23 +26,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorWhite">
+
             <Button
+                android:id="@+id/seting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="设置"
-                android:paddingLeft="16dp"
-                android:paddingRight="@dimen/activity_vertical_margin"
-                android:drawableLeft="@mipmap/manage"
+                android:paddingLeft="8dp"
+                android:drawableLeft="@mipmap/seting"
                 android:textColor="@color/colorBlack"
-                android:background="@null"/>
+                android:background="@null" />
             <Button
+                android:id="@+id/exit_app"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@mipmap/exit"
                 android:text="退出"
-                android:paddingLeft="@dimen/activity_vertical_margin"
+                android:paddingLeft="8dp"
+                android:drawableLeft="@mipmap/exit"
                 android:textColor="@color/colorBlack"
-                android:background="@null"/>
+                android:background="@null" />
         </LinearLayout>
         </android.support.design.widget.NavigationView>
 

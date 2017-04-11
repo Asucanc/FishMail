@@ -15,7 +15,7 @@ public class ForgetPasswordActivity extends AppCompatActivity implements Navigat
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgetpassword);
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
-        toolbar.setTitle("输入邮箱账号");
+        toolbar.setTitle("找回密码");
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(this);
         Button find_password = (Button)findViewById(R.id.find_password_button);
