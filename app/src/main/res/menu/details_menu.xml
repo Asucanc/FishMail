@@ -12,5 +12,4 @@
         android:icon="@mipmap/next"
         app:showAsAction="always"/>
 
-
 </menu>

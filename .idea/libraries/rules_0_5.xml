@@ -10,7 +10,6 @@
     <JAVADOC />
     <SOURCES>
       <root url="jar://E:/Program Files/android-sdk-windows/extras/android/m2repository/com/android/support/test/rules/0.5/rules-0.5-sources.jar!/" />
-      <root url="jar://F:/SoftWare/eclipse/android-sdk-windows/android-sdk-windows/extras/android/m2repository/com/android/support/test/rules/0.5/rules-0.5-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
