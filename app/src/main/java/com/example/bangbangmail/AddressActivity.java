@@ -17,7 +17,7 @@ public class AddressActivity extends AppCompatActivity  implements NavigationVie
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_send);
+        setContentView(R.layout.nav_drawer);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("通讯录");
         setSupportActionBar(toolbar);
