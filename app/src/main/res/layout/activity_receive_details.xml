@@ -7,6 +7,13 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="com.example.bangbangmail.ReceiveDetailsActivity">
+
+    <com.ashokvarma.bottomnavigation.BottomNavigationBar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="bottom"
+        android:id="@+id/bottom_navigation_bar"/>
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -205,9 +212,4 @@
         </LinearLayout>
     </ScrollView>
     </LinearLayout>
-    <com.ashokvarma.bottomnavigation.BottomNavigationBar
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_gravity="bottom"
-        android:id="@+id/bottom_navigation_bar"/>
 </android.support.design.widget.CoordinatorLayout>

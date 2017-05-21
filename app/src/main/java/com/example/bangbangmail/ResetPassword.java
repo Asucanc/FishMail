@@ -4,14 +4,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
-public class ForgetPassword2Activity extends AppCompatActivity {
+public class ResetPassword extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forget_password2);
+        setContentView(R.layout.activity_reset_password);
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
-        toolbar.setTitle("选择验证方式");
+        toolbar.setTitle("重置密码");
         setSupportActionBar(toolbar);
     }
 }

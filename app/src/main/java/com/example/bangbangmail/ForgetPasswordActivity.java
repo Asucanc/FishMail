@@ -26,7 +26,7 @@ public class ForgetPasswordActivity extends AppCompatActivity implements Navigat
         int id = v.getId();
         switch (id){
             case R.id.find_password_button:
-                Intent intent = new Intent(ForgetPasswordActivity.this,ForgetPassword2Activity.class);
+                Intent intent = new Intent(ForgetPasswordActivity.this,ResetPassword.class);
                 startActivity(intent);
                 break;
             case R.id.toolbar:

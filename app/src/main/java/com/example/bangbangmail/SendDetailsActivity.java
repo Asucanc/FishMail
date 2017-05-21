@@ -35,7 +35,7 @@ public class SendDetailsActivity extends AppCompatActivity {
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.details_menu,menu);
+        getMenuInflater().inflate(R.menu.send_menu,menu);
         return true;
     }
 }
