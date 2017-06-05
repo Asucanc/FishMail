@@ -3,61 +3,53 @@
     package="com.example.bangbangmail">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/mail_launcher"
+        android:icon="@mipmap/mail_login"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:name=".Util.FishMailApplication"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".SendActivity"
-            android:label="@string/title_activity_send"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".AddressActivity" />
-        <activity android:name=".AdversariaActivity" />
-        <activity android:name=".AlreadyDeleteActivity" />
-        <activity android:name=".DraftActivity" />
-        <activity android:name=".StartMailActivity" />
-        <activity android:name=".TrashActivity" />
-        <activity android:name=".WriteActivity" />
-        <activity android:name=".ReceiveActivity" />
+        <activity android:name=".AlreadyDeleteActivity"
+            android:launchMode="singleInstance" />
+        <activity android:name=".WriteActivity"
+            android:launchMode="singleTask"/>
+        <activity android:name=".ReceiveActivity"
+            android:launchMode="singleInstance"/>
+        <activity android:name=".AlreadySendActivity"
+            android:launchMode="singleInstance"/>
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login">
-
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
-        </activity>
-<<<<<<< HEAD
-        <activity android:name=".ForgetPasswordActivity" />
-        <activity android:name=".RegisterActivity" >
-=======
-        <activity android:name=".ForgetPasswordActivity">
+            android:label="@string/title_activity_login"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
->>>>>>> 993ec97ffca47427e401525dc4c550a1b4e3c732
         </activity>
-        <activity android:name=".RegisterActivity"></activity>
-        <activity
-            android:name=".ReceiveDetailsActivity"
-            android:label="@string/title_activity_receive_details"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".SendDetailsActivity" />
-        <activity android:name=".TransitionActivity" />
-        <activity android:name=".ForgetPassword2Activity"></activity>
-        <activity android:name=".PhoneVerificationActivity" />
-        <activity android:name=".MailVerificationActivity" />
-        <activity android:name=".SecretSecurityActivity" />
-        <activity android:name=".SettingActivity"></activity>
+        <activity android:name=".ForgetPasswordActivity"
+            android:launchMode="singleTask"/>
+        <activity android:name=".RegisterActivity"
+            android:launchMode="singleTask"/>
+        <!-- <activity android:name=".ForgetPasswordActivity"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
+        <!-- <activity android:name=".RegisterActivity"></activity> -->
+        <activity android:name=".ResetPassword"
+            android:launchMode= "singleTask"/>
+        <activity android:name=".MailDetail"
+            android:launchMode= "singleTask" />
     </application>
 
 </manifest>

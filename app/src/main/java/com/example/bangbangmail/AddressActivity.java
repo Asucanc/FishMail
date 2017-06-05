@@ -1,23 +1,30 @@
 package com.example.bangbangmail;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
-public class AddressActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener{
+import com.example.bangbangmail.Util.ActivityController;
+import com.example.bangbangmail.Util.BaseAcctivity;
+import com.example.bangbangmail.Util.FishMailApplication;
+
+public class AddressActivity extends BaseAcctivity implements NavigationView.OnNavigationItemSelectedListener{
+    private static final String TAG = "AddressActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_send);
+        setContentView(R.layout.nav_drawer);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("通讯录");
         setSupportActionBar(toolbar);
@@ -26,10 +33,28 @@ public class AddressActivity extends AppCompatActivity  implements NavigationVie
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
+        //发送快捷按钮
+        FloatingActionButton sendMailBtn = (FloatingActionButton) findViewById(R.id.send_mail);
+        sendMailBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AddressActivity.this, WriteActivity.class);
+                startActivity(intent);
+            }
+        });
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        //加载用户信息
+        View headerview = navigationView.inflateHeaderView(R.layout.nav_header);
+        TextView usernameText = (TextView) headerview.findViewById(R.id.header_username);
+        TextView usermailText = (TextView) headerview.findViewById(R.id.header_mail);
+        String mail = FishMailApplication.getMail();
+        String username = mail.substring(0,mail.indexOf("@"));
+        Log.d(TAG, "onCreate: mail" + mail);
+        usernameText.setText(username);
+        usermailText.setText(mail);
         navigationView.setNavigationItemSelectedListener(this);
     }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -45,38 +70,48 @@ public class AddressActivity extends AppCompatActivity  implements NavigationVie
         int id = item.getItemId();
         Intent intent;
         switch (id){
+            //收件箱
             case R.id.nav_rec_mail:
                 intent=new Intent(AddressActivity.this,ReceiveActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.nav_start_mail:
-                intent = new Intent(AddressActivity.this,StartMailActivity.class);
-                startActivity(intent);
-                break;
+            //写邮件
             case R.id.nav_write_mail:
                 intent= new Intent(AddressActivity.this,WriteActivity.class);
                 startActivity(intent);
                 break;
+//            //通讯录
+//            case R.id.nav_contacts:
+//                intent = new Intent(AddressActivity.this,AddressActivity.class);
+//                startActivity(intent);
+//                break;
+            //已发送
+            case R.id.nav_send:
+                intent = new Intent(AddressActivity.this,AlreadySendActivity.class);
+                startActivity(intent);
+                break;
+            //已删除
             case R.id.nav_delete_mail:
                 intent = new Intent(AddressActivity.this,AlreadyDeleteActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.nav_trash_mail:
-                intent = new Intent(AddressActivity.this,TrashActivity.class);
+            //切换账号
+            case R.id.switch_acount:
+                FishMailApplication.setMail(null);
+                FishMailApplication.setPwd(null);
+                //结束所有的活动
+                ActivityController.finishAll();
+                intent = new Intent(AddressActivity.this,LoginActivity.class);
                 startActivity(intent);
+                finish();
+//                ActivityController.finishAllButLogin();
                 break;
-            case R.id.nav_send:
-                intent = new Intent(AddressActivity.this,SendActivity.class);
-                break;
-            case R.id.nav_address:
-                intent = new Intent(AddressActivity.this,AddressActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.nav_adversaria:
-                intent = new Intent(AddressActivity.this,DraftActivity.class);
-                startActivity(intent);
-                break;
-            default:
+            //退出应用
+            case R.id.exit_app:
+                //结束所有的活动
+                ActivityController.finishAll();
+                //杀死当前进程
+                android.os.Process.killProcess(android.os.Process.myPid());
                 break;
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

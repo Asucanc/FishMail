@@ -40,5 +40,6 @@
     </string-array>
     <string name="mail_name">邮箱名：</string>
     <string name="password">密码：</string>
+    <string name="launchMode">singleInstance</string>
 
 </resources>
