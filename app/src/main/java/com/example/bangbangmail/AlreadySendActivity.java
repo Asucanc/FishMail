@@ -38,7 +38,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class AlreadyDeleteActivity extends BaseAcctivity
+public class AlreadySendActivity extends BaseAcctivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private LinearLayout mianLayout;
 
@@ -57,7 +57,7 @@ public class AlreadyDeleteActivity extends BaseAcctivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_drawer);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("已删除");
+        toolbar.setTitle("已发送");
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -73,7 +73,7 @@ public class AlreadyDeleteActivity extends BaseAcctivity
         sendMailBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AlreadyDeleteActivity.this, WriteActivity.class);
+                Intent intent = new Intent(AlreadySendActivity.this, WriteActivity.class);
                 startActivity(intent);
             }
         });
@@ -95,13 +95,13 @@ public class AlreadyDeleteActivity extends BaseAcctivity
             public void onRefresh() {
                 try {
                     //主线程沉睡，等待子线程完成
-                    Thread pullThread = getAlreadyDelMailList();
+                    Thread pullThread = getAlreadySendMailList();
                     pullThread.start();
                     pullThread.join();
                 }catch (InterruptedException e){
                     e.printStackTrace();
                 }
-                Toast.makeText(AlreadyDeleteActivity.this, "刷新完成", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AlreadySendActivity.this, "刷新完成", Toast.LENGTH_SHORT).show();
             }
         });
         if (!mailList.isEmpty()) {
@@ -110,7 +110,7 @@ public class AlreadyDeleteActivity extends BaseAcctivity
         } else {
             Log.d(TAG, "onCreate时候，mailList长度：" + mailList.size());
             try {
-                Thread pullThread = getAlreadyDelMailList();
+                Thread pullThread = getAlreadySendMailList();
                 pullThread.start();
                 pullThread.join();
             }catch (InterruptedException e){
@@ -118,6 +118,17 @@ public class AlreadyDeleteActivity extends BaseAcctivity
             }
         }
 
+    }
+
+    /**
+     * 没有邮件时加载布局
+     */
+    private void showMail(){
+        mianLayout.removeAllViews();
+        FrameLayout layout = (FrameLayout) getLayoutInflater().inflate(
+                R.layout.activity_receive, null).findViewById(R.id.recv_layout);
+        recyclerView = (RecyclerView) layout.findViewById(R.id.recycler_view_recv);
+        mianLayout.addView(layout);
     }
 
     /**
@@ -138,12 +149,12 @@ public class AlreadyDeleteActivity extends BaseAcctivity
     /**
      * 从数据库得到已发送的邮件
      */
-    public Thread getAlreadyDelMailList() {
+    public Thread getAlreadySendMailList() {
         Thread pullThread =  new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    mailList = getDeleteMaillist("2",FishMailApplication.getMail());
+                    mailList = getSendMaillist("0",FishMailApplication.getMail());
 //                    getSendMaillist("0",FishMailApplication.getMail());
                 }catch (Exception e){
                     e.printStackTrace();
@@ -155,7 +166,8 @@ public class AlreadyDeleteActivity extends BaseAcctivity
                     @Override
                     public void run() {
                         if (mailList.isEmpty()) {
-                            Toast.makeText(AlreadyDeleteActivity.this, "已删除为空", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AlreadySendActivity.this, "你还没有发出后任何邮件", Toast.LENGTH_SHORT).show();
+                            showMail();
                         } else {
                             showMail(mailList);
                         }
@@ -173,7 +185,7 @@ public class AlreadyDeleteActivity extends BaseAcctivity
      * @param folder
      * @param mail
      */
-    public ArrayList<Mail> getDeleteMaillist(String folder, final String mail) {
+    public ArrayList<Mail> getSendMaillist(String folder, final String mail) {
         final ArrayList<Mail> mailList = new ArrayList<>();
         OkHttpClient client = new OkHttpClient();
         String url = "http://120.77.168.57:9090/FishMail/UMailServlet";
@@ -187,26 +199,26 @@ public class AlreadyDeleteActivity extends BaseAcctivity
         try {
             Response response = client.newCall(request).execute();
             String responseData = response.body().string();
-            Log.d("Json数据:", responseData);
-            try {
-                JSONArray jsonArray = new JSONArray(responseData);
-                mailList.clear();
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    JSONObject jsonObject = jsonArray.getJSONObject(i);
-                    String mailid = jsonObject.getString("MailID");
-                    String from = jsonObject.getString("From");
-                    String to = jsonObject.getString("To");
-                    String date = jsonObject.getString("date");
-                    String subject = jsonObject.getString("subject");
-                    String content = jsonObject.getString("content");
-                    Log.d(TAG, "jsonArray: " + mailid + content);
-                    mailList.add(new Mail(mailid, from, to, date, subject, content));
+                Log.d("Json数据:", responseData);
+                try {
+                    JSONArray jsonArray = new JSONArray(responseData);
+                    mailList.clear();
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        String mailid = jsonObject.getString("MailID");
+                        String from = jsonObject.getString("From");
+                        String to = jsonObject.getString("To");
+                        String date = jsonObject.getString("date");
+                        String subject = jsonObject.getString("subject");
+                        String content = jsonObject.getString("content");
+                        Log.d(TAG, "jsonArray: " + mailid + content);
+                        mailList.add(new Mail(mailid, from, to, date, subject, content));
+                        Log.d(TAG, "mailList长度: " + mailList.size());
+                    }
                     Log.d(TAG, "mailList长度: " + mailList.size());
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-                Log.d(TAG, "mailList长度: " + mailList.size());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -246,27 +258,27 @@ public class AlreadyDeleteActivity extends BaseAcctivity
         switch (id){
             //收件箱
             case R.id.nav_rec_mail:
-                intent=new Intent(AlreadyDeleteActivity.this,ReceiveActivity.class);
+                intent=new Intent(AlreadySendActivity.this,ReceiveActivity.class);
                 startActivity(intent);
                 break;
             //写邮件
             case R.id.nav_write_mail:
-                intent= new Intent(AlreadyDeleteActivity.this,WriteActivity.class);
+                intent= new Intent(AlreadySendActivity.this,WriteActivity.class);
                 startActivity(intent);
                 break;
 //            //通讯录
 //            case R.id.nav_contacts:
-//                intent = new Intent(AlreadyDeleteActivity.this,AddressActivity.class);
+//                intent = new Intent(AlreadySendActivity.this,AddressActivity.class);
 //                startActivity(intent);
 //                break;
             //已发送
             case R.id.nav_send:
-                intent = new Intent(AlreadyDeleteActivity.this,AlreadySendActivity.class);
+                intent = new Intent(AlreadySendActivity.this,AlreadySendActivity.class);
                 startActivity(intent);
                 break;
             //已删除
             case R.id.nav_delete_mail:
-                intent = new Intent(AlreadyDeleteActivity.this,AlreadyDeleteActivity.class);
+                intent = new Intent(AlreadySendActivity.this,AlreadyDeleteActivity.class);
                 startActivity(intent);
                 break;
             //切换账号
@@ -275,7 +287,7 @@ public class AlreadyDeleteActivity extends BaseAcctivity
                 FishMailApplication.setPwd(null);
                 //结束所有的活动
                 ActivityController.finishAll();
-                intent = new Intent(AlreadyDeleteActivity.this,LoginActivity.class);
+                intent = new Intent(AlreadySendActivity.this,LoginActivity.class);
                 startActivity(intent);
                 finish();
 //                ActivityController.finishAllButLogin();

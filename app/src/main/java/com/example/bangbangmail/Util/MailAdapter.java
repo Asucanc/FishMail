@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,7 +58,12 @@ public class MailAdapter extends RecyclerView.Adapter<MailAdapter.ViewHolder>{
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
                 Mail mail = mMailList.get(position);
+                Log.d("MailAdapter", "onClick: " + position);
                 Intent intent = new Intent(mContext, MailDetail.class);
+                Log.d("MailAdapter", "onClick: " + mContext);
+                intent.putExtra("CONTEXT", mContext.toString());
+                intent.putExtra("MAILID", mail.getMailID());
+                intent.putExtra("POSITION", mMailList.size() - position - 1);
                 intent.putExtra("FROM", mail.getFrom());
                 intent.putExtra("TO", mail.getTo());
                 intent.putExtra("SUBJECT", mail.getSubject());

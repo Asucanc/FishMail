@@ -6,41 +6,28 @@
             android:icon="@mipmap/mail"
             android:title="收件箱" />
         <item
-            android:id="@+id/nav_start_mail"
-            android:icon="@mipmap/start"
-            android:title="星标邮件" />
+            android:id="@+id/nav_write_mail"
+            android:icon="@mipmap/write1"
+            android:title="写邮件" />
+        <item
+            android:id="@+id/nav_send"
+            android:icon="@mipmap/send"
+            android:title="已发送" />
+        <item
+            android:id="@+id/nav_delete_mail"
+            android:icon="@mipmap/delete"
+            android:title="已删除" />
     </group>
-    <item android:title="应用" >
+    <item android:title="账号">
         <menu>
             <item
-                android:id="@+id/nav_address"
-                android:icon="@mipmap/addrlist"
-                android:title="通讯录" />
+                android:id="@+id/switch_acount"
+                android:icon="@mipmap/switch_acount"
+                android:title="切换账号" />
             <item
-                android:id="@+id/nav_write_mail"
-                android:icon="@mipmap/write1"
-                android:title="写邮件" />
+                android:id="@+id/exit_app"
+                android:icon="@mipmap/exit"
+                android:title="退出" />
         </menu>
     </item>
-    <item android:title="文件夹">
-        <menu>
-            <item
-                android:id="@+id/nav_adversaria"
-                android:icon="@mipmap/paper"
-                android:title="草稿箱" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@mipmap/send"
-                android:title="已发送" />
-            <item
-                android:id="@+id/nav_delete_mail"
-                android:icon="@mipmap/delete"
-                android:title="已删除" />
-            <item
-                android:id="@+id/nav_trash_mail"
-                android:icon="@mipmap/trash"
-                android:title="垃圾箱" />
-        </menu>
-    </item>
-    <item android:title=""></item>
 </menu>

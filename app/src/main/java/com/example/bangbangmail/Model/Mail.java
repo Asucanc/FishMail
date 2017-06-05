@@ -45,7 +45,18 @@ public class Mail {
         this.text = text;
     }
 
+
+
     public Mail() {
+    }
+
+    public Mail(String mailid, String from, String to, String date, String subject, String content) {
+        this.mailID = mailid;
+        this.from = from;
+        this.to = to;
+        this.date = date;
+        this.subject = subject;
+        this.text = content;
     }
 
     public void setMailID(String mailID) {

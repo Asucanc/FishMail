@@ -22,33 +22,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header"
         app:menu="@menu/drawer_item">
-        <LinearLayout
-            android:layout_gravity="bottom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorWhite">
-
-            <Button
-                android:id="@+id/seting"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="设置"
-                android:paddingLeft="12dp"
-                android:drawableLeft="@mipmap/seting"
-                android:textColor="@color/colorBlack"
-                android:background="@null" />
-            <Button
-                android:id="@+id/exit_app"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="退出"
-                android:paddingLeft="10dp"
-                android:drawableLeft="@mipmap/exit"
-                android:textColor="@color/colorBlack"
-                android:background="@null" />
-        </LinearLayout>
     </android.support.design.widget.NavigationView>
 
 </android.support.v4.widget.DrawerLayout>

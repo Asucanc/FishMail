@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_header_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/teal"
@@ -22,19 +23,19 @@
         />
 
     <TextView
+        android:id="@+id/header_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="16dp"
         android:textSize="16sp"
-        android:text="Fish Mail"
         android:textColor="@color/colorWhite"
         />
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/header_mail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="3dp"
         android:textColor="@color/colorWhite"
-        android:text="Team03@fishmail.com" />
+        />
 
 </LinearLayout>
